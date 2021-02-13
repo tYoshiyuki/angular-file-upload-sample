@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="uploader-container" appDragDrop (fileDropped)="onFileDropped($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple onclick="this.value = null" (change)="fileBrowseHandler($event)" />
+    <h3>Drag and drop file here</h3>
+    <button mat-raised-button color="accent">Browse for file</button>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let file of uploadFileList; let i = index">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <div mat-line>{{ file.name }}</div>
+      <div mat-line> {{file.size | bytes }}</div>
+      <button mat-fab color="accent" (click)="deleteFile(i)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
